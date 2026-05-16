@@ -1,0 +1,833 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChainReaction Chris | Mobile Cycle Repairs</title>
+  <meta name="description" content="Local mobile cycle repairs, servicing, brakes, gears, wheels and tune-ups by ChainReaction Chris." />
+
+  <style>
+    :root {
+      --bg: #050705;
+      --panel: #101410;
+      --panel2: #151a15;
+      --green: #7fd000;
+      --green2: #9cff00;
+      --white: #f4f4f4;
+      --muted: #b7b7b7;
+      --line: rgba(127, 208, 0, 0.28);
+      --shadow: 0 20px 70px rgba(0,0,0,.55);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        linear-gradient(rgba(5,7,5,.88), rgba(5,7,5,.95)),
+        url("images/background-texture.jpg");
+      background-size: cover;
+      background-attachment: fixed;
+      color: var(--white);
+      line-height: 1.6;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+      border: 0;
+      outline: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 22px;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color: #071006;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      border-radius: 999px;
+      box-shadow: 0 0 30px rgba(127,208,0,.28);
+      transition: .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 45px rgba(127,208,0,.45);
+    }
+
+    .btn.ghost {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid var(--line);
+      box-shadow: none;
+    }
+
+    nav {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 5;
+      padding: 24px 0;
+    }
+
+    nav .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    nav .logo {
+      width: 210px;
+      filter: drop-shadow(0 0 18px rgba(127,208,0,.15));
+    }
+
+    .hero {
+      min-height: 92vh;
+      position: relative;
+      display: grid;
+      align-items: center;
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(5,7,5,.98) 0%, rgba(5,7,5,.78) 45%, rgba(5,7,5,.35) 100%),
+        url("images/hero-background.jpg");
+      background-size: cover;
+      background-position: center;
+      transform: scale(1.04);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto -10% -20% -10%;
+      height: 45%;
+      background: radial-gradient(circle, rgba(127,208,0,.18), transparent 60%);
+      filter: blur(30px);
+    }
+
+    .hero-grid {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 50px;
+      align-items: center;
+      padding-top: 120px;
+    }
+
+    .eyebrow {
+      color: var(--green2);
+      text-transform: uppercase;
+      letter-spacing: .22em;
+      font-weight: 900;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 7.8rem);
+      line-height: .88;
+      text-transform: uppercase;
+      letter-spacing: -0.06em;
+      margin-bottom: 24px;
+    }
+
+    h1 span {
+      color: var(--green);
+      text-shadow: 0 0 28px rgba(127,208,0,.3);
+    }
+
+    .tagline {
+      max-width: 620px;
+      font-size: clamp(1.1rem, 2vw, 1.55rem);
+      color: var(--muted);
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(16,20,16,.78), rgba(7,9,7,.92));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transform: rotate(1deg);
+    }
+
+    .hero-card img {
+      border-radius: 20px;
+    }
+
+    .strip {
+      position: relative;
+      z-index: 3;
+      margin-top: -58px;
+    }
+
+    .strip .wrap {
+      background: linear-gradient(90deg, #101410, #0b0e0b);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      overflow: hidden;
+    }
+
+    .strip-item {
+      padding: 24px;
+      border-right: 1px solid var(--line);
+    }
+
+    .strip-item:last-child {
+      border-right: none;
+    }
+
+    .strip-item strong {
+      display: block;
+      color: var(--green2);
+      font-size: 1.7rem;
+      line-height: 1;
+    }
+
+    .strip-item span {
+      color: var(--muted);
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    section {
+      padding: 88px 0;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 4vw, 4rem);
+      line-height: .95;
+      text-transform: uppercase;
+      letter-spacing: -0.045em;
+      margin-bottom: 20px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 720px;
+      font-size: 1.12rem;
+    }
+
+    .intro-grid,
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .image-panel {
+      border-radius: 26px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      background: #0b0d0b;
+    }
+
+    .content-panel {
+      background: linear-gradient(180deg, rgba(16,20,16,.88), rgba(11,14,11,.9));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      padding: clamp(26px, 4vw, 48px);
+      box-shadow: var(--shadow);
+    }
+
+    .chain {
+      margin-top: 28px;
+      max-width: 460px;
+      opacity: .9;
+    }
+
+    .services {
+      background: rgba(0,0,0,.18);
+      border-top: 1px solid rgba(255,255,255,.04);
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 24px;
+      align-items: end;
+      margin-bottom: 30px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 16px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, var(--panel2), #090b09);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 12px 40px rgba(0,0,0,.3);
+      min-height: 260px;
+    }
+
+    .card img {
+      width: 110px;
+      height: 110px;
+      object-fit: cover;
+      margin: 0 auto 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(127,208,0,.22);
+    }
+
+    .card h3 {
+      color: var(--white);
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: .95rem;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .price-list {
+      background: linear-gradient(180deg, rgba(16,20,16,.9), rgba(8,10,8,.95));
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .price-list p {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px 26px;
+      border-bottom: 1px solid rgba(127,208,0,.18);
+      font-size: 1.08rem;
+    }
+
+    .price-list p:last-child {
+      border-bottom: none;
+    }
+
+    .price-list span {
+      color: var(--white);
+      font-weight: 800;
+    }
+
+    .price-list strong {
+      color: var(--green2);
+      white-space: nowrap;
+    }
+
+    ul {
+      margin-top: 22px;
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 12px;
+      color: var(--muted);
+      padding-left: 28px;
+      position: relative;
+    }
+
+    li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--green2);
+      font-weight: 900;
+    }
+
+    .contact {
+      text-align: center;
+      padding: 100px 0;
+      background:
+        linear-gradient(rgba(5,7,5,.86), rgba(5,7,5,.93)),
+        url("images/bike-repair.jpg");
+      background-size: cover;
+      background-position: center;
+      border-top: 1px solid var(--line);
+    }
+
+    .contact p {
+      color: var(--muted);
+      margin: 0 auto 26px;
+      max-width: 620px;
+      font-size: 1.1rem;
+    }
+
+    .small {
+      margin-top: 16px !important;
+      font-size: .85rem !important;
+      opacity: .7;
+    }
+
+    footer {
+      padding: 34px 0;
+      border-top: 1px solid var(--line);
+      background: #030403;
+      text-align: center;
+      color: var(--muted);
+    }
+
+    footer img {
+      width: 180px;
+      margin: 0 auto 14px;
+    }
+
+     @media (max-width: 900px) {
+      body {
+        background-attachment: scroll;
+      }
+
+      .wrap {
+        width: min(100% - 24px, 1180px);
+      }
+
+      nav {
+        padding: 16px 0;
+      }
+
+      nav .wrap {
+        justify-content: center;
+      }
+
+      nav .logo {
+        width: 170px;
+        border: none;
+      }
+
+      nav .btn {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 118px 0 54px;
+        text-align: center;
+      }
+
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(5,7,5,.86) 0%, rgba(5,7,5,.94) 68%, rgba(5,7,5,1) 100%),
+          url("images/hero-background.jpg");
+        background-size: cover;
+        background-position: center;
+      }
+
+      .hero-grid,
+      .intro-grid,
+      .why-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-grid {
+        padding-top: 0;
+      }
+
+      h1 {
+        font-size: clamp(3.2rem, 17vw, 5.8rem);
+        line-height: .82;
+        margin-bottom: 20px;
+      }
+
+      .eyebrow {
+        font-size: .78rem;
+        letter-spacing: .22em;
+      }
+
+      .tagline,
+      .lead {
+        font-size: 1rem;
+        max-width: 100%;
+      }
+
+      .hero-buttons {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .btn {
+        width: 100%;
+        padding: 15px 20px;
+      }
+
+      .hero-card {
+        display: none;
+      }
+
+      .strip {
+        margin-top: 0;
+        padding: 0 0 26px;
+      }
+
+      .strip .wrap {
+        grid-template-columns: 1fr 1fr;
+        border-radius: 18px;
+      }
+
+      .strip-item {
+        padding: 18px;
+      }
+
+      .strip-item:nth-child(2) {
+        border-right: none;
+      }
+
+      .strip-item strong {
+        font-size: 1.35rem;
+      }
+
+      section {
+        padding: 54px 0;
+      }
+
+      h2 {
+        font-size: clamp(2.4rem, 12vw, 4rem);
+      }
+
+      .content-panel {
+        padding: 28px 22px;
+        border-radius: 22px;
+      }
+
+      .image-panel,
+      .hero-card,
+      .card,
+      .content-panel,
+      .price-list {
+        border-color: rgba(127, 208, 0, .22);
+      }
+
+      .image-panel img,
+      .hero-card img,
+      footer img,
+      nav img,
+      .card img {
+        border: none !important;
+        outline: none !important;
+      }
+
+      .image-panel {
+        border-radius: 22px;
+      }
+
+      .chain {
+        margin-top: 24px;
+      }
+
+      .section-head {
+        display: block;
+        margin-bottom: 24px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 14px;
+      }
+
+      .card {
+        min-height: auto;
+        padding: 20px;
+        display: grid;
+        grid-template-columns: 82px 1fr;
+        text-align: left;
+        gap: 16px;
+        align-items: center;
+      }
+
+      .card img {
+        width: 82px;
+        height: 82px;
+        margin: 0;
+        border-radius: 16px;
+      }
+
+      .card h3 {
+        margin-bottom: 4px;
+      }
+
+      .card p {
+        font-size: .92rem;
+      }
+
+      .price-list p {
+        padding: 18px 20px;
+      }
+
+      .why .image-panel {
+        order: 2;
+      }
+
+      .why .content-panel {
+        order: 1;
+      }
+
+      .contact {
+        padding: 70px 0;
+      }
+
+      footer {
+        padding: 28px 0;
+      }
+
+      footer img {
+        width: 155px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .strip .wrap {
+        grid-template-columns: 1fr;
+      }
+
+      .strip-item {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .strip-item:last-child {
+        border-bottom: none;
+      }
+
+      .card {
+        grid-template-columns: 72px 1fr;
+        padding: 16px;
+      }
+
+      .card img {
+        width: 72px;
+        height: 72px;
+      }
+
+      .price-list p {
+        flex-direction: row;
+        align-items: center;
+        font-size: .98rem;
+      }
+
+      .price-list strong {
+        font-size: .95rem;
+      }
+
+      .small {
+        font-size: .78rem !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="hero">
+  <nav>
+    <div class="wrap">
+      <img src="images/logo.png" alt="ChainReaction Chris logo" class="logo" />
+      <a href="#contact" class="btn">Book a repair</a>
+    </div>
+  </nav>
+
+  <div class="wrap hero-grid">
+    <div class="hero-content">
+      <p class="eyebrow">Mobile Cycle Repairs</p>
+      <h1>ChainReaction <span>Chris</span></h1>
+      <p class="tagline">Reliable local bike repairs, servicing, brakes, gears, wheels and tune-ups — keeping you riding smooth and strong.</p>
+      <div class="hero-buttons">
+        <a href="#services" class="btn">View Services</a>
+        <a href="#contact" class="btn ghost">Contact Chris</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <img src="images/bike-repair.jpg" alt="Bike being repaired" />
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-item"><strong>Local</strong><span>Friendly service</span></div>
+    <div class="strip-item"><strong>Flexible</strong><span>Times that work</span></div>
+    <div class="strip-item"><strong>Fair</strong><span>Honest prices</span></div>
+    <div class="strip-item"><strong>Ready</strong><span>Repairs & tune-ups</span></div>
+  </div>
+</div>
+
+<main>
+
+<section class="intro">
+  <div class="wrap intro-grid">
+    <div class="content-panel">
+      <p class="eyebrow">Bike repairs without the hassle</p>
+      <h2>Reliable local cycle repairs</h2>
+      <p class="lead">
+        ChainReaction Chris offers friendly, affordable cycle servicing and repairs,
+        with flexible times and collection/return available locally.
+      </p>
+      <img src="images/chain-graphic.png" alt="Chain graphic" class="chain" />
+    </div>
+
+    <div class="image-panel">
+      <img src="images/toolbox.jpg" alt="Cycle repair toolbox" />
+    </div>
+  </div>
+</section>
+
+<section id="services" class="services">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">What Chris can help with</p>
+        <h2>Services</h2>
+      </div>
+      <p class="lead">Quick fixes, safety checks and proper tune-ups to get bikes back on the road.</p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <img src="images/icon-servicing.png" alt="Servicing icon">
+        <h3>Servicing</h3>
+        <p>General checks, adjustments and maintenance.</p>
+      </div>
+
+      <div class="card">
+        <img src="images/icon-brakes.png" alt="Brakes icon">
+        <h3>Brakes</h3>
+        <p>Brake pads, cable tension and safety checks.</p>
+      </div>
+
+      <div class="card">
+        <img src="images/icon-gears.png" alt="Gears icon">
+        <h3>Gears</h3>
+        <p>Smoother shifting and derailleur adjustment.</p>
+      </div>
+
+      <div class="card">
+        <img src="images/icon-wheels.png" alt="Wheels icon">
+        <h3>Wheels</h3>
+        <p>Punctures, tyres, tubes and basic wheel checks.</p>
+      </div>
+
+      <div class="card">
+        <img src="images/icon-tools.png" alt="Tools icon">
+        <h3>Tune-Ups</h3>
+        <p>Quick fixes to get your bike riding better.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="wrap pricing-grid">
+    <div class="content-panel">
+      <p class="eyebrow">Simple starting prices</p>
+      <h2>No fuss. Fair prices.</h2>
+      <p class="lead">
+        Prices may vary depending on parts and condition, but these starting prices give customers a simple idea before booking.
+      </p>
+    </div>
+
+    <div class="price-list">
+      <p><span>Puncture Repair</span><strong>From £15</strong></p>
+      <p><span>Brake Adjustment</span><strong>From £20</strong></p>
+      <p><span>Gear Tune</span><strong>From £25</strong></p>
+      <p><span>Basic Service</span><strong>From £45</strong></p>
+      <p><span>Full Service</span><strong>From £60</strong></p>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap why-grid">
+    <div class="image-panel">
+      <img src="images/hero-background.jpg" alt="Mountain bike outdoors" />
+    </div>
+
+    <div class="content-panel">
+      <p class="eyebrow">Local. Friendly. Flexible.</p>
+      <h2>Back on the road fast</h2>
+      <p class="lead">
+        Whether it’s a puncture, noisy brakes, slipping gears or a full tune-up,
+        Chris can help get your bike riding smoothly again.
+      </p>
+      <ul>
+        <li>Flexible appointment times</li>
+        <li>Collection and return available locally</li>
+        <li>Honest advice and fair prices</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <p class="eyebrow">Ready when you are</p>
+    <h2>Book a repair</h2>
+    <p>Message Chris to arrange a repair, service or quick bike check.</p>
+    <a href="https://wa.me/447000000000" class="btn">WhatsApp Chris</a>
+    <p class="small">Replace this with Chris’ real number before launch.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <img src="images/logo.png" alt="ChainReaction Chris logo" />
+  <p>© 2026 ChainReaction Chris. Mobile Cycle Repairs.</p>
+</footer>
+
+</body>
+</html>
